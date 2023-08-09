@@ -4,7 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="d-flex align-items-center justify-content-center mt-5">
+    <h1 class="title p-5" id="title">THE UNSINT PROJECT</h1>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -45,3 +47,16 @@
 }
     </tbody>
 </table>
+
+<script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+<script>
+    var typed = new Typed('#title', {
+        strings: ['', 'THE UNSINT PROJECT', '', 'THE UNSINT PROJECT'],
+      typeSpeed: 80,
+        smartBackspace: true,
+        backSpeed: 80,
+        backDelay: 700,
+        loop: true,
+
+    });
+</script>
