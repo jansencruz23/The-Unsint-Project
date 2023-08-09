@@ -1,0 +1,38 @@
+﻿namespace TheUnsintProject.Models
+{
+    public enum LetterColor
+    {
+        WHITE,
+        LIGHT_GRAY,
+        GRAY,
+        BLACK,
+        LIGHT_ORANGE,
+        YELLOW,
+        KHAKI,
+        BROWN,
+        BLUE_GRAY,
+        TURQUOISE,
+        PALE_BLUE,
+        LIGHT_BLUE,
+        PURPLE,
+        LIGHT_PURPLE,
+        DULL_PURPLE,
+        PALE_PURPLE,
+        MAROON,
+        RED,
+        ORANGE,
+        TANGERINE,
+        ARMY_GREEN,
+        DARK_GREEN,
+        GREEN,
+        LIGHT_GREEN,
+        BLUE,
+        DARK_BLUE,
+        WINE,
+        DARK_PURPLE,
+        PALE_PINK,
+        LIGHT_PINK,
+        PINK,
+        PEACH
+    }
+}
