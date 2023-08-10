@@ -37,6 +37,7 @@ namespace TheUnsintProject.Controllers
 
             var letter = await _context.Letter
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (letter == null)
             {
                 return NotFound();
@@ -48,6 +49,7 @@ namespace TheUnsintProject.Controllers
         // GET: Letters/Create
         public IActionResult Create()
         {
+            PopulateColors();
             return View();
         }
 
@@ -56,7 +58,7 @@ namespace TheUnsintProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Message,Color")] Letter letter)
+        public async Task<IActionResult> Create([Bind("Name,Message,Color")] Letter letter)
         {
             if (ModelState.IsValid)
             {
@@ -158,6 +160,23 @@ namespace TheUnsintProject.Controllers
         private bool LetterExists(int id)
         {
           return (_context.Letter?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        private void PopulateColors(object selected = null)
+        {
+            var colors = new List<SelectListItem>();
+
+            foreach (LetterColor color in Enum.GetValues(typeof(LetterColor)))
+            {
+                colors.Add(new SelectListItem
+                {
+                    Text = color.ToString(),
+                    Value = color.ToString(),
+                    Selected = (color.ToString() == selected?.ToString())
+                });
+            }
+
+            ViewBag.Colors = new SelectList(colors, "Value", "Text", selected);
         }
     }
 }

@@ -23,6 +23,7 @@ body {
 
 .title {
   font-size: 4.5rem;
+  height: 180px;
 }
 
 .typed-cursor {

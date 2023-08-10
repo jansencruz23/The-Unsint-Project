@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheUnsintProject.Data;
 
@@ -10,9 +11,11 @@ using TheUnsintProject.Data;
 namespace TheUnsintProject.Migrations
 {
     [DbContext(typeof(TUPDbContext))]
-    partial class TUPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230810091117_UpdateName")]
+    partial class UpdateName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

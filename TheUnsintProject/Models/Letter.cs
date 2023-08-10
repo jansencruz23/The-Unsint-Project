@@ -9,7 +9,7 @@ namespace TheUnsintProject.Models
 
         [Required]
         [StringLength(12, MinimumLength = 1)]
-        public string Title { get; set; }
+        public string Name { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 1)]
