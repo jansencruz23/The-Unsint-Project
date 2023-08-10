@@ -21,7 +21,8 @@ namespace TheUnsintProject.Controllers
         }
 
         // GET: Letters
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string? q,
+            string? filter)
         {
             return  _unitOfWork.LetterRepository != null ?
                         View(await _unitOfWork.LetterRepository.Get()) :

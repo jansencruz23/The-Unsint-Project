@@ -32,3 +32,13 @@ body {
     margin-left: -55px;
     font-weight: 100;
 }
+
+.no-design {
+    text-decoration: none;
+    display: block;
+    color: #303030;
+}
+
+    .no-design:hover {
+        color: #000000;
+    }
