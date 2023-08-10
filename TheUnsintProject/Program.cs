@@ -1,12 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using TheUnsintProject.Contracts;
+using TheUnsintProject.DAL;
 using TheUnsintProject.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<TUPDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("TUPDbContext") ?? throw new InvalidOperationException("Connection string 'TUPDbContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<TUPDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TUPDbContext") ?? throw new InvalidOperationException("Connection string 'TUPDbContext' not found.")));
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 

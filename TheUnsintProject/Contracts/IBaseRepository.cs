@@ -9,8 +9,5 @@ namespace TheUnsintProject.Contracts
             string includeProperties = "");
         Task<T> GetById(object id);
         void Insert(T entity);
-        Task Delete(object id);
-        void Delete(T entity);
-        void Update(T entity);
     }
 }

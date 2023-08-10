@@ -53,26 +53,5 @@ namespace TheUnsintProject.Repositories
         {
             _dbSet.Add(entity);
         }
-
-        public void Update(T entity)
-        {
-            _dbSet.Update(entity).CurrentValues.SetValues(entity);
-        }
-
-        public async Task Delete(object id)
-        {
-            var entity = await GetById(id);
-            Delete(entity);
-        }
-
-        public void Delete(T entity)
-        {
-            if (_context.Entry(entity).State == EntityState.Detached)
-            {
-                _dbSet.Attach(entity);
-            }
-
-            _dbSet.Remove(entity);
-        }
     }
 }
