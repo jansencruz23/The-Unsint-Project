@@ -24,7 +24,8 @@ namespace TheUnsintProject.Controllers
         public async Task<IActionResult> Index(string? q,
             string? filter)
         {
-            var letters = await _unitOfWork.LetterRepository.Get();
+            var letters = await _unitOfWork.LetterRepository
+                .Get(orderBy: l => l.OrderByDescending(l => l.Id));
 
             if (q != null)
             {

@@ -42,3 +42,75 @@ body {
     .no-design:hover {
         color: #000000;
     }
+
+/* COLORS */
+
+.bg-blue {
+    background-color: #1424fc;
+    color: white;
+}
+
+.bg-white {
+    background-color: white;
+    color: black;
+}
+
+.bg-lightgray {
+    background-color: #a2a2a2;
+    color: white;
+}
+
+.bg-gray {
+    background-color: #6b6b6b;
+    color: white;
+}
+
+.bg-black {
+    background-color: black;
+    color: white;
+}
+
+.bg-lightorange {
+    background-color: #fda44a;
+    color: black;
+}
+
+.bg-yellow {
+    background-color: #fefe7c;
+    color: black;
+}
+
+.bg-khaki {
+    background-color: #eddbba;
+    color: black;
+}
+
+.bg-brown {
+    background-color: #a27040;
+    color: white;
+}
+
+.bg-bluegray {
+    background-color: #a9b8bb;
+    color: black;
+}
+
+.bg-turquoise {
+    background-color: #708c8c;
+    color: white;
+}
+
+.bg-paleblue {
+    background-color: #a9d1ee;
+    color: black;
+}
+
+.bg-lightblue {
+    background-color: #46d2fc;
+    color: black;
+}
+
+.bg-purple {
+    background-color: #711bcf;
+    color: white;
+}

@@ -1,8 +1,27 @@
-﻿@model Letter
+﻿@using System.Drawing;
+@model Letter
+
+@{
+    var color = $"bg-{Model.Color.ToString().ToLower().Replace("_", "")}";
+}
 
 <a asp-action="Details" asp-route-id="@Model.Id" class="card col-3 m-2 no-design">
-    <div class="card-body">
-        <h5 class="card-title">@Model.Name</h5>
-        <p class="card-text">@Model.Message</p>
+    <div>
+        <div class="row">
+            <div class="col-2">ABC</div>
+            <div class="col-2">To: </div>
+            <div class="col-6">@Model.Name</div>
+            <div class="col-2"></div>
+        </div>
+        <div class="m-1 row h-75">
+            <div class="@color" style="height: 20rem;">
+                <p class="m-2" style="font-size: 2.3em;">@Model.Message</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">Send</div>
+            <div class="col">#unsintproject</div>
+            <div class="col-3">Back</div>
+        </div>
     </div>
 </a>
