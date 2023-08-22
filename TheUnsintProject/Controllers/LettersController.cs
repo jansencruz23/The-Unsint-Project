@@ -24,9 +24,14 @@ namespace TheUnsintProject.Controllers
         public async Task<IActionResult> Index(string? q,
             string? filter)
         {
-            return  _unitOfWork.LetterRepository != null ?
-                        View(await _unitOfWork.LetterRepository.Get()) :
-                        Problem("Entity set 'TUPDbContext.Letter'  is null.");
+            var letters = await _unitOfWork.LetterRepository.Get();
+
+            if (q != null)
+            {
+                letters = letters.Where(l => l.Name.Contains(q));
+            }
+
+            return View(letters);
         }
 
         // GET: Letters/Details/5
