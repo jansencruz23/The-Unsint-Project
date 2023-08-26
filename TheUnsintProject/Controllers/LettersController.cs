@@ -24,6 +24,8 @@ namespace TheUnsintProject.Controllers
         public async Task<IActionResult> Index(string? q,
             string? filter, int page = 1)
         {
+            ViewBag.Search = q;
+
             var letters = await _unitOfWork.LetterRepository
                 .Get(orderBy: l => l.OrderByDescending(l => l.Id));
 
@@ -32,14 +34,7 @@ namespace TheUnsintProject.Controllers
                 letters = letters.Where(l => l.Name.Contains(q, StringComparison.OrdinalIgnoreCase));
             }
 
-            var model = PaginatedList<Letter>.Create(letters, page, 15);
-
-            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
-            {
-                return PartialView("_LetterList", model);
-            }
-
-            return View(model);
+            return View(PaginatedList<Letter>.Create(letters, page, 1));
         }
 
         // GET: Letters/Details/5

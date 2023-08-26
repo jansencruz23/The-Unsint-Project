@@ -24,6 +24,58 @@
     }
 </div>
 
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : string.Empty;
+    var nextDisabled = !Model.HasNextPage ? "disabled" : string.Empty;
+}
+<nav>
+    <ul class="pagination justify-content-center">
+        <li class="page-item @prevDisabled">
+            <a class="page-link" asp-route-page="@(Model.Page - 1)">Previous</a>
+        </li>
+
+        @if (Model.Page > 3)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-route-page="1">1</a>
+            </li>
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
+        }
+
+        @for (var pageNum = Math.Max(1, Model.Page - 2); pageNum <= Math.Min(Model.TotalPages, Model.Page + 2); pageNum++)
+        {
+            if (pageNum == Model.Page)
+            {
+                <li class="page-item active">
+                    <span class="page-link">@pageNum</span>
+                </li>
+            }
+            else
+            {
+                <li class="page-item">
+                    <a class="page-link" asp-route-page="@pageNum">@pageNum</a>
+                </li>
+            }
+        }
+
+        @if (Model.Page < Model.TotalPages - 2)
+        {
+            <li class="page-item disabled">
+                <span class="page-link">...</span>
+            </li>
+            <li class="page-item">
+                <a class="page-link" asp-route-page="@Model.TotalPages">@Model.TotalPages</a>
+            </li>
+        }
+
+        <li class="page-item @nextDisabled">
+            <a class="page-link" asp-route-page="@(Model.Page + 1)">Next</a>
+        </li>
+    </ul>
+</nav>
+
 <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
 <script>
     var typed = new Typed('#title', {
@@ -32,32 +84,4 @@
         backSpeed: 80,
         loop: true,
     });
-</script>
-
-<script>
-    var currentPage = 1;
-    var isLoading = false;
-
-    $(window).on('scroll', function() {
-        if (!isLoading && $(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
-            loadMore();
-        }
-    });
-
-    function loadMore() {
-        if (currentPage < @Model.TotalPages) {
-            isLoading = true;
-            currentPage++;
-
-            $.ajax({
-                url: '@Url.Action("Index", "Letters")',
-                type: 'GET',
-                data: { page: currentPage },
-                success: function (data) {
-                    $('#letterList').append(data);
-                    isLoading = false;
-                }
-            });
-        }
-    }
 </script>
