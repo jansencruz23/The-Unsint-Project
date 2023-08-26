@@ -34,6 +34,7 @@ namespace TheUnsintProject.Controllers
                 letters = letters.Where(l => l.Name.Contains(q, StringComparison.OrdinalIgnoreCase));
             }
 
+            ViewBag.IsIndexPage = true;
             return View(PaginatedList<Letter>.Create(letters, page, 15));
         }
 

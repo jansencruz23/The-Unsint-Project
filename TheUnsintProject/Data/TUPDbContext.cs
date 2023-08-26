@@ -14,6 +14,6 @@ namespace TheUnsintProject.Data
         {
         }
 
-        public DbSet<TheUnsintProject.Models.Letter> Letter { get; set; } = default!;
+        public DbSet<Letter> Letters { get; set; }
     }
 }
