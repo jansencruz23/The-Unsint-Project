@@ -114,3 +114,98 @@ body {
     background-color: #711bcf;
     color: white;
 }
+
+.bg-lightpurple {
+    background-color: #a874fc;
+    color: black;
+}
+
+.bg-dullpurple {
+    background-color: #907c94;
+    color: white;
+}
+
+.bg-palepurple {
+    background-color: #d1c5d8;
+    color: black;
+}
+
+.bg-maroon {
+    background-color: #900404;
+    color: white;
+}
+
+.bg-red {
+    background-color: #ff1c1c;
+    color: white;
+}
+
+.bg-orange {
+    background-color: #ff7424;
+    color: white;
+}
+
+.bg-tangerine {
+    background-color: #ffa47c;
+    color: black;
+}
+
+.bg-armygreen {
+    background-color: #78845c;
+    color: white;
+}
+
+.bg-darkgreen {
+    background-color: #08740c;
+    color: white;
+}
+
+.bg-green {
+    background-color: #44d046;
+    color: black;
+}
+
+.bg-lightgreen {
+    background-color: #a7fea7;
+    color: black;
+}
+
+.bg-blue {
+    background-color: #1227fc;
+    color: white;
+}
+
+.bg-darkblue {
+    background-color: #053ea0;
+    color: white;
+}
+
+.bg-wine {
+    background-color: #603442;
+    color: white;
+}
+
+.bg-darkpurple {
+    background-color: #341c3f;
+    color: white;
+}
+
+.bg-palepink {
+    background-color: #fbe0e9;
+    color: black;
+}
+
+.bg-lightpink {
+    background-color: #fda6fd;
+    color: black;
+}
+
+.bg-pink {
+    background-color: #f978d1;
+    color: black;
+}
+
+.bg-peach {
+    background-color: #fda6fd;
+    color: black;
+}

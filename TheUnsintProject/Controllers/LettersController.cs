@@ -34,7 +34,7 @@ namespace TheUnsintProject.Controllers
                 letters = letters.Where(l => l.Name.Contains(q, StringComparison.OrdinalIgnoreCase));
             }
 
-            return View(PaginatedList<Letter>.Create(letters, page, 1));
+            return View(PaginatedList<Letter>.Create(letters, page, 15));
         }
 
         // GET: Letters/Details/5
