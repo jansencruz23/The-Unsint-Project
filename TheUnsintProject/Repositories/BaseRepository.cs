@@ -17,15 +17,15 @@ namespace TheUnsintProject.Repositories
             _dbSet = context.Set<T>();
         }
 
-        public async Task<IEnumerable<T>> Get(Expression<Func<T, bool>> filter = null, 
+        public async Task<IEnumerable<T>> Get(Expression<Func<T, bool>> search = null, 
             Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, 
             string includeProperties = "")
         {
             IQueryable<T> query = _dbSet;
 
-            if (filter != null)
+            if (search != null)
             {
-                query = query.Where(filter);
+                query = query.Where(search);
             }
 
             foreach (var include in includeProperties.Split(
@@ -36,11 +36,15 @@ namespace TheUnsintProject.Repositories
 
             if (orderBy != null)
             {
-                return await orderBy(query).ToListAsync();
+                return await orderBy(query)
+                    .AsNoTracking()
+                    .ToListAsync();
             }
             else
             {
-                return await query.ToListAsync();
+                return await query
+                    .AsNoTracking()
+                    .ToListAsync();
             }
         }
 

@@ -22,17 +22,24 @@ namespace TheUnsintProject.Controllers
 
         // GET: Letters
         public async Task<IActionResult> Index(string? q,
-            string? filter)
+            string? filter, int page = 1)
         {
             var letters = await _unitOfWork.LetterRepository
                 .Get(orderBy: l => l.OrderByDescending(l => l.Id));
 
-            if (q != null)
+            if (!string.IsNullOrWhiteSpace(q))
             {
-                letters = letters.Where(l => l.Name.Contains(q));
+                letters = letters.Where(l => l.Name.Contains(q, StringComparison.OrdinalIgnoreCase));
             }
 
-            return View(letters);
+            var model = PaginatedList<Letter>.Create(letters, page, 15);
+
+            if (Request.Headers["X-Requested-With"] == "XMLHttpRequest")
+            {
+                return PartialView("_LetterList", model);
+            }
+
+            return View(model);
         }
 
         // GET: Letters/Details/5

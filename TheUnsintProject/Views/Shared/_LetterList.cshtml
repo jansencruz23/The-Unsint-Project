@@ -1,0 +1,8 @@
+﻿@model PaginatedList<Letter>
+
+<div class="row d-flex justify-content-center" id="letterList">
+    @foreach (var item in Model)
+    {
+        @await Html.PartialAsync("_Letter", item)
+    }
+</div>

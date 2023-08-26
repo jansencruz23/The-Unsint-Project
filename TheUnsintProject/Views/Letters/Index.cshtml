@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Letter>
+﻿@model PaginatedList<Letter>
 
 @{
     ViewData["Title"] = "Index";
@@ -11,13 +11,13 @@
 <form method="get">
     <div class="row d-flex justify-content-center">
         <div class="col-10 d-flex justify-content-center">
-            <input type="text" class="form-control m-4" placeholder="Search for a name..." />
-            <button class="btn btn-outline-secondary m-4 px-4" asp-route-q="q">Filter</button>
+            <input type="text" class="form-control m-4" name="q" placeholder="Search for a name..." />
+            <button class="btn btn-outline-secondary m-4 px-4" type="submit">Filter</button>
         </div>
     </div>
 </form>
 
-<div class="row d-flex justify-content-center">
+<div class="row d-flex justify-content-center" id="letterList">
     @foreach (var item in Model)
     {
         @await Html.PartialAsync("_Letter", item)
@@ -32,4 +32,32 @@
         backSpeed: 80,
         loop: true,
     });
+</script>
+
+<script>
+    var currentPage = 1;
+    var isLoading = false;
+
+    $(window).on('scroll', function() {
+        if (!isLoading && $(window).scrollTop() + $(window).height() >= $(document).height() - 100) {
+            loadMore();
+        }
+    });
+
+    function loadMore() {
+        if (currentPage < @Model.TotalPages) {
+            isLoading = true;
+            currentPage++;
+
+            $.ajax({
+                url: '@Url.Action("Index", "Letters")',
+                type: 'GET',
+                data: { page: currentPage },
+                success: function (data) {
+                    $('#letterList').append(data);
+                    isLoading = false;
+                }
+            });
+        }
+    }
 </script>
