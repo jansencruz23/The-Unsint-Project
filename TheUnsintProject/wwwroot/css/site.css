@@ -206,6 +206,17 @@ body {
 }
 
 .bg-peach {
-    background-color: #fda6fd;
+    background-color: #ffd4a4;
     color: black;
+}
+
+.bg-transparent {
+    background-color: rgba(0,0,0,0) !important;
+    border: none !important;
+}
+
+/* COLOR CARDS */
+.color-card {
+    height: 100%;
+    width: 100%;
 }

@@ -2,7 +2,7 @@
 @model Letter
 
 @{
-    var color = $"bg-{Model.Color.ToString().ToLower().Replace("_", "")}";
+    var bgColor = $"bg-{Model.Color.ToString().ToLower().Replace("_", "")}";
     var isIndexPage = ViewBag.IsIndexPage ?? false;
     var targetAttrib = isIndexPage ? "_blank" : string.Empty;
 }
@@ -16,7 +16,7 @@
             <div class="col-2"></div>
         </div>
         <div class="m-1 row h-75">
-            <div class="@color" style="height: 20rem;">
+            <div class="@bgColor" style="height: 20rem;">
                 <p class="m-2" style="font-size: 2.3em;">@Html.DisplayFor(item => item.Message)</p>
             </div>
         </div>

@@ -1,33 +1,53 @@
-﻿@model TheUnsintProject.Models.Letter
+﻿@model Letter
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="text-center mt-5">Submit a Post</h1>
 
-<h4>Letter</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Message" class="control-label"></label>
-                <input asp-for="Message" class="form-control" />
-                <span asp-validation-for="Message" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Color" class="control-label"></label>
-                <select asp-for="Color" class="form-control" asp-items="ViewBag.Colors">
-                    <option value="">Select Color</option>
-                </select>
-                <span asp-validation-for="Color" class="text-danger"></span>
+            <div class="row">
+                <div class="col-7 mt-3 py-1 px-3">
+                    <div class="bg-black p-1">
+                        <div class="bg-white">
+                            <div class="row text-center">
+                                <div class="col-2">ABC</div>
+                                <div class="col-2">To: </div>
+                                <input asp-for="Name" placeholder="Enter Name" class="col-6 bg-transparent" />
+                                <div class="col-2"></div>
+                            </div>
+                            <div>
+                                <div class="bg-black m-2" style="height: 20rem;">
+                                    <input asp-for="Name" placeholder="Enter Your Message Here..."
+                                    class="form-control bg-transparent"/>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <div class="col-2">Send</div>
+                                <div class="col-8">#unsintproject</div>
+                                <div class="col-2">Back</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-5 row g-2 p-1 mb-1" style="height: 30rem; width: 15rem">
+                    @{
+                        foreach (var color in Enum.GetValues(typeof(LetterColor)))
+                        {
+                            var bgColor = color.ToString()!
+                                .ToLower()
+                                .Replace("_", "");
+                            <div class="col-3">
+                                <div class="bg-black p-1 color-card" style: width:95%>
+                                    <div class="bg-@bgColor color-card" title="@bgColor"></div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -41,5 +61,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
