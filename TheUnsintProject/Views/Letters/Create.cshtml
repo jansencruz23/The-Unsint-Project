@@ -20,9 +20,9 @@
                                 <div class="col-2"></div>
                             </div>
                             <div>
-                                <div class="bg-black m-2" style="height: 20rem;">
+                                <div class="bg-black m-2" style="height: 20rem;" id="letterMessage">
                                     <input asp-for="Name" placeholder="Enter Your Message Here..."
-                                    class="form-control bg-transparent"/>
+                                        class="form-control bg-transparent"/>
                                 </div>
                             </div>
                             <div class="row text-center">
@@ -40,9 +40,11 @@
                             var bgColor = color.ToString()!
                                 .ToLower()
                                 .Replace("_", "");
+
                             <div class="col-3">
-                                <div class="bg-black p-1 color-card" style: width:95%>
-                                    <div class="bg-@bgColor color-card" title="@bgColor"></div>
+                                <div class="bg-black p-1 color-card" style="width:95%;">
+                                    <div class="bg-@bgColor color-card  card-button" 
+                                        id="card-@bgColor" title="@bgColor" data-color="@bgColor"></div>
                                 </div>
                             </div>
                         }
@@ -60,7 +62,41 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+<script>
+    var cards = document.querySelectorAll('.card-button')
+        .forEach(function (card) {
+            card.addEventListener('click', function () {
+                var selectedColor = $(this).data('color');
+
+                $('#letterMessage')
+                    .removeClass(function (index, className) {
+                        return (className.match(/(^|\s)bg\S+/g) || []).join(' ');
+                });
+
+                $('#letterMessage')
+                    .addClass(`bg-${selectedColor}`);
+                    console.log(`bg-${selectedColor}`);
+
+                var bgColor = $('#letterMessage').css('background-color');
+                var textColor = getContrastColor(bgColor);
+
+                // Set the input text color
+                $('#letterMessage input').css('color', textColor);
+            });
+        });
+
+        function getContrastColor(color) {
+            // Convert color to RGB values
+            var rgb = color.match(/\d+/g);
+            var brightness = (parseInt(rgb[0]) * 299 + parseInt(rgb[1]) * 587 + parseInt(rgb[2]) * 114) / 1000;
+        
+            // Determine contrast color
+            return brightness > 128 ? 'black' : 'white';
+        }
+</script>
+
 @section Scripts {
+
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
