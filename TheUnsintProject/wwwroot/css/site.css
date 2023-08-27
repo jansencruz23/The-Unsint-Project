@@ -1,11 +1,13 @@
 html {
   font-size: 14px;
+  font-family: 'Roboto';
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+        font-family: 'Roboto';
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -13,12 +15,14 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    font-family: 'Roboto';
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    font-family: 'Roboto';
 }
 
 .title {
@@ -219,4 +223,27 @@ body {
 .color-card {
     height: 100%;
     width: 100%;
+}
+
+/* TYPOGRAPHY */
+.textarea-full {
+    font-size: 2.7rem;
+    width: 100%;
+    height: 100%;
+}
+
+.text-md {
+    font-size: 2rem;
+}
+
+.text-sm {
+    font-size: 1.5rem;
+}
+
+.archive-name {
+    margin-left: -2.5rem;
+}
+
+.archive-header {
+    margin-top: 0.2rem;
 }

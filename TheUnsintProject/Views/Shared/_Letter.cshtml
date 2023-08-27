@@ -9,14 +9,14 @@
 
 <a asp-action="Details" asp-route-id="@Model.Id" target="@targetAttrib" class="card col-3 m-2 no-design">
     <div>
-        <div class="row">
-            <div class="col-2">ABC</div>
-            <div class="col-2">To: </div>
-            <div class="col-6">@Html.DisplayFor(item => item.Name)</div>
-            <div class="col-2"></div>
+        <div class="row text-sm archive-header">
+            <div class="col-2 bg-black px-2 fw-bold text-md" style="width: 5rem;">ABC</div>
+            <div class="col-3">To: </div>
+            <div class="col-6 archive-name">@Html.DisplayFor(item => item.Name)</div>
+            <div class="col-1"></div>
         </div>
         <div class="m-1 row h-75">
-            <div class="@bgColor" style="height: 20rem;">
+            <div class="@bgColor" style="height: 25rem;">
                 <p class="m-2" style="font-size: 2.3em;">@Html.DisplayFor(item => item.Message)</p>
             </div>
         </div>

@@ -7,22 +7,24 @@
 <h1 class="text-center mt-5">Submit a Post</h1>
 
 <div class="row d-flex justify-content-center">
-    <div class="col-md-6">
+    <div class="col-md-7">
         <form asp-action="Create">
             <div class="row">
                 <div class="col-7 mt-3 py-1 px-3">
                     <div class="bg-black p-1">
                         <div class="bg-white">
-                            <div class="row text-center">
-                                <div class="col-2">ABC</div>
-                                <div class="col-2">To: </div>
+                            <div class="row text-center text-md px-3 pt-1">
+                                <div class="col-2 bg-black px-2 fw-bold text-md" style="width: 5rem;">ABC</div>
+                                <div class="col-2">To:</div>
                                 <input asp-for="Name" placeholder="Enter Name" class="col-6 bg-transparent" />
-                                <div class="col-2"></div>
+                                <div class="col-2 bg-black" style="width: 100%; height: 100%;"></div>
                             </div>
                             <div>
-                                <div class="bg-black m-2" style="height: 20rem;" id="letterMessage">
-                                    <input asp-for="Name" placeholder="Enter Your Message Here..."
-                                        class="form-control bg-transparent"/>
+                                <div class="bg-black m-2" style="height: 24rem;" id="letterMessage">
+                                    <textarea asp-for="Message" placeholder="Type Your Message Here..."
+                                        class="form-control bg-transparent textarea-full"
+                                        style="color: white;" >
+                                    </textarea>
                                 </div>
                             </div>
                             <div class="row text-center">
@@ -33,7 +35,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-5 row g-2 p-1 mb-1" style="height: 30rem; width: 15rem">
+                <div class="col-5 row g-2 p-1" style="width: 16rem">
+                    <input type="hidden" asp-for="Color" id="hiddenColor" />
                     @{
                         foreach (var color in Enum.GetValues(typeof(LetterColor)))
                         {
@@ -44,15 +47,18 @@
                             <div class="col-3">
                                 <div class="bg-black p-1 color-card" style="width:95%;">
                                     <div class="bg-@bgColor color-card  card-button" 
-                                        id="card-@bgColor" title="@bgColor" data-color="@bgColor"></div>
+                                        id="card-@bgColor" title="@bgColor" data-color="@bgColor"
+                                        ></div>
                                 </div>
                             </div>
                         }
                     }
                 </div>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <div class="form-group mt-3">
+                <input type="submit" value="Submit Your Message" 
+                    class="btn btn-outline-secondary text-sm fw-bold" 
+                    style="width: 100%;" />
             </div>
         </form>
     </div>
@@ -82,6 +88,7 @@
 
                 // Set the input text color
                 $('#letterMessage input').css('color', textColor);
+                document.getElementById('hiddenColor').value = selectedColor;
             });
         });
 
