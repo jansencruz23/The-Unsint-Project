@@ -240,10 +240,15 @@ body {
     font-size: 1.5rem;
 }
 
+.text-rg {
+    font-size: 1.8rem;
+}
+
 .archive-name {
-    margin-left: -2.5rem;
+    margin-left: -3.9rem;
 }
 
 .archive-header {
     margin-top: 0.2rem;
+    margin-left: -9px;
 }

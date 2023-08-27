@@ -17,7 +17,7 @@
     </div>
 </form>
 
-<div class="row d-flex justify-content-center" id="letterList">
+<div class="row g-4" id="letterList">
     @foreach (var item in Model)
     {
         @await Html.PartialAsync("_Letter", item)

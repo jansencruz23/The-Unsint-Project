@@ -10,7 +10,7 @@
     <div class="col-md-7">
         <form asp-action="Create">
             <div class="row">
-                <div class="col-7 mt-3 py-1 px-3">
+                <div class="col-7 mt-3 p-1 px-3">
                     <div class="bg-black p-1">
                         <div class="bg-white">
                             <div class="row text-center text-md px-3 pt-1">
@@ -23,14 +23,14 @@
                                 <div class="bg-black m-2" style="height: 24rem;" id="letterMessage">
                                     <textarea asp-for="Message" placeholder="Type Your Message Here..."
                                         class="form-control bg-transparent textarea-full"
-                                        style="color: white;" >
+                                        style="color: white; resize: none;">
                                     </textarea>
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <div class="col-2">Send</div>
-                                <div class="col-8">#unsintproject</div>
-                                <div class="col-2">Back</div>
+                            <div class="row text-center px-2">
+                                <div class="col-2 text-sm fw-bold">Send</div>
+                                <div class="col-8 text-sm ml-4">#unsintproject</div>
+                                <div class="col-2 text-sm fw-bold text-end" style="margin-left: -20px;">Back</div>
                             </div>
                         </div>
                     </div>
@@ -73,6 +73,7 @@
         .forEach(function (card) {
             card.addEventListener('click', function () {
                 var selectedColor = $(this).data('color');
+                document.getElementById('hiddenColor').value = selectedColor;
 
                 $('#letterMessage')
                     .removeClass(function (index, className) {
@@ -88,7 +89,6 @@
 
                 // Set the input text color
                 $('#letterMessage input').css('color', textColor);
-                document.getElementById('hiddenColor').value = selectedColor;
             });
         });
 
