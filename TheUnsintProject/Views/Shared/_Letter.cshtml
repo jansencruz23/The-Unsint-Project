@@ -7,7 +7,7 @@
     var targetAttrib = isIndexPage ? "_blank" : string.Empty;
 }
 
-<a asp-action="Details" asp-route-id="@Model.Id" target="@targetAttrib" class="card col-4 no-design bg-white p-1">
+<a asp-action="Details" asp-route-id="@Model.Id" target="@targetAttrib" class="card col-md-4 col-sm-6 no-design bg-white p-1 letter">
     <div class="bg-black p-1">
         <div class="bg-white">
             <div class="row text-sm pt-1 px-3">
@@ -17,7 +17,7 @@
                 <div class="col-1"></div>
             </div>
             <div class="mx-3 mt-1 row h-75">
-                <div class="@bgColor" style="height: 25rem;">
+                <div class="@bgColor letter-body">
                     <p class="m-2" style="font-size: 2.3em;">@Html.DisplayFor(item => item.Message)</p>
                 </div>
             </div>

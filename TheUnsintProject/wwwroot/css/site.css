@@ -47,6 +47,10 @@ body {
         color: #000000;
     }
 
+.letter-body {
+    height: 25rem;
+}
+
 /* COLORS */
 
 .bg-blue {
@@ -251,4 +255,28 @@ body {
 .archive-header {
     margin-top: 0.2rem;
     margin-left: -9px;
+}
+
+@media (max-width: 576px) {
+    .letter {
+        width: 28rem;
+        height: 10rem;
+        margin: 1rem 1rem 30rem 1rem;
+    }
+
+    .letter-body {
+        height: 35rem; /* Adjust the height as needed */
+    }
+
+    .title {
+        font-size: 2rem;
+        height: 100px;
+    }
+
+    .typed-cursor {
+        font-size: 2rem;
+        margin-top: 5px;
+        margin-left: -45px;
+        font-weight: 100;
+    }
 }
